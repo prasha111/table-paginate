@@ -23,20 +23,21 @@ function Pagination({setCurrentPage, currentPage, itemsPerPage, totalPages}) {
     <span className="paginate-span">
       <button
         aria-label="Previous Page"
+        disabled={currentPage === 1}
         onClick={prevPage} className={`left-arrow ${currentPage === 1 ? "disabled" : ""}`}>&lt;</button>
       {calculateVisiblePages().map((page) => (
-        <a
+        <span
           key={page}
           className={`page-number ${currentPage === page ? "selected-a" : "not-selected-a"
             }`}
           onClick={() => setCurrentPage(page)}
         >
           {page}
-        </a>
+        </span>
       ))}
       <button
+        disabled={currentPage === totalPages}
         aria-label="Next Page"
-
         onClick={nextPage} className={`right-arrow ${currentPage === totalPages ? "disabled" : ""}`}>&gt;</button>
     </span>
     <div>
